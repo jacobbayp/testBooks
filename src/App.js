@@ -56,7 +56,7 @@ function App() {
               <US1/>
               </Route>
              <Route path="/logout">{logOut}</Route>
-             <Route path="/addbook">{AddBook}</Route>
+             <Route path="/addbook"><AddBook react={React}/></Route>
           </Switch>
         </div>
       ) : (

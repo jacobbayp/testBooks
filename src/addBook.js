@@ -1,15 +1,17 @@
 import React, { useState } from "react";
-
+import App from "./App.js";
 const createBookURL= "http://localhost:8080/testjc/api/book/add";
 
-function AddBook() {
-  const init = {
+let init = {
     isbn: "",
     author: "",
-    publish_year: "",
+    publishYear: "",
     publisher: "",
-    title: "",
+    title: ""
   };
+
+  function AddBook () {
+  
   const [book, setBook] = useState(init);
 
   const handleChange = (evt) => {
@@ -45,7 +47,7 @@ function AddBook() {
         <input
           type="text"
           class="stretch-to-fit"
-          id="publish_year"
+          id="publishYear"
           placeholder="udgivelsesår"
         ></input>
 
