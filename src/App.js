@@ -17,7 +17,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import $ from 'jquery';
 import Popper from 'popper.js';
 import 'bootstrap/dist/js/bootstrap.bundle.min';
-import addBook from './addBook';
+import AddBook from './addBook';
 
 
 function App() {
@@ -56,7 +56,7 @@ function App() {
               <US1/>
               </Route>
              <Route path="/logout">{logOut}</Route>
-             <Route path="/addbook">{addBook}</Route>
+             <Route path="/addbook">{AddBook}</Route>
           </Switch>
         </div>
       ) : (

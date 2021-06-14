@@ -1,120 +1,96 @@
-import react from 'react';
-import { useState } from 'react';
+import React, { useState } from "react";
 
-const addBookURL = "www.test.dk";
+const createBookURL= "http://localhost:8080/testjc/api/book/add";
 
+function AddBook() {
+  const init = {
+    isbn: "",
+    author: "",
+    publish_year: "",
+    publisher: "",
+    title: "",
+  };
+  const [book, setBook] = useState(init);
 
+  const handleChange = (evt) => {
+    evt.preventDefault();
+    let target = evt.target;
+    let id = target.id;
+    let value = target.value;
 
-
-
-  function addBookRequest(book) {
-      const options = makeOptions("POST", book)
-      return fetch(addBookURL, options)
-         .then(handleHttpErrors)
-
+    setBook({ ...book, [id]: value });
+  };
+  function handleSubmit(evt) {
+    evt.preventDefault();
+    AddBookFetch(book);
   }
 
-  function handleHttpErrors(res) {
-    if (!res.ok) {
-      return Promise.reject({ status: res.status, fullError: res.json() });
-    }
-    return res.json();
+  return (
+    <div>
+      <form onChange={handleChange}>
+        <input
+          class="stretch-to-fit"
+          type="text"
+          id="isbn"
+          placeholder="isbn nummer"
+        ></input>
+        <input
+          type="text"
+          class="stretch-to-fit"
+          id="author"
+          placeholder="forfatter"
+        ></input>
+
+
+        <input
+          type="text"
+          class="stretch-to-fit"
+          id="publish_year"
+          placeholder="udgivelsesår"
+        ></input>
+
+        <input
+          type="text"
+          class="stretch-to-fit"
+          id="publisher"
+          placeholder="Udgiver"
+        ></input>
+
+        <input
+          type="text"
+          class="stretch-to-fit"
+          id="title"
+          placeholder="Bogtitel"
+        ></input>
+
+        <input
+          type="submit"
+          class="stretch-to-fit"
+          onClick={handleSubmit}
+          value="Submit"
+        ></input>
+        </form >
+    </div >
+  );
+}
+
+function AddBookFetch(book) {
+  const options = makeOptions("POST", true, book);
+  return fetch(createBookURL, options);
+}
+const makeOptions = (method, addToken, body) => {
+  var opts = {
+    method: method,
+    headers: {
+      "Content-type": "application/json",
+      Accept: "application/json",
+    },
+  };
+  if (body) {
+    opts.body = JSON.stringify(body);
+    console.log(JSON.stringify(body));
   }
+  return opts;
+};
 
-
-  function makeOptions(method, body) {
-    var opts = {
-        method: method,
-        headers: {
-            "Content-type": "application/json",
-            "Accept": "application/json"
-        }
-    }
-    if (body) {
-        opts.body = JSON.stringify(body);
-    }
-    return opts;
-}
-
-
-
-// const [book, setBook] = useState("");
-        
-//     const handleChange = (e) => {
-//         // const target = e.target;
-//         console.log(e)
-//         // const isbn = target.isbn;
-//         // const titel = target.titel;
-//         // const author = target.author;
-//         // const publisher = target.publisher;
-//         // const publish_year = target.publish_year;
-//         // setBook({isbn, titel, author, publisher, publish_year})
-//         // console.log(book)
-
-//   // function handleSubmit(e){
-//     //     e.preventDefault();
-//     //     console.log("test")
-//     // }
-
-
-
-function addBook(){
-
-
-let book = [];
-
-function handleSubmit(e){
- e.preventDefault();
-
-book.push(e.target.isbn.value, e.target.titel.value, e.target.author.value, e.target.publisher.value, e.target.publish_year.value,)
-console.log(book)
-addBookRequest(book);
-}
-
-
-  
-   return (
-       <div>
-             <form onSubmit={handleSubmit}>
-            <label>
-            Isbn:
-            <input type ="text" name ="isbn" />
-            </label>
-            <br></br>
-            <label>
-            Titel:
-            <input type ="text" name ="titel"/>
-            </label>
-            <br></br>
-            <label>
-            Author:
-            <input type ="text" name ="author"/>
-            </label>
-            <br></br>
-            <label>
-            Publisher:
-            <input type ="text" name ="publisher"/>
-            </label>
-            <br></br>
-            Publish Year:
-            <label>
-            <input type ="text" name ="publish_year"/>
-            </label>
-            <br></br>
-       
-            
-            <input type="submit" value="submit" id="addBook" />
-        </form>
-        </div>
-
-
-  
-    );
-
-
-
-    
-}
-
-
-export default addBook;
+export default AddBook;
