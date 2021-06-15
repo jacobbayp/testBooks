@@ -18,6 +18,7 @@ import $ from 'jquery';
 import Popper from 'popper.js';
 import 'bootstrap/dist/js/bootstrap.bundle.min';
 import AddBook from './addBook';
+import EditBook from "./editBook";
 
 
 function App() {
@@ -56,7 +57,8 @@ function App() {
               <US1/>
               </Route>
              <Route path="/logout">{logOut}</Route>
-             <Route path="/addbook"><AddBook react={React}/></Route>
+             <Route path="/addbook"><AddBook/></Route>
+             <Route path="/editbook"><EditBook/></Route>
           </Switch>
         </div>
       ) : (
@@ -116,6 +118,9 @@ export function HeaderNav() {
           </NavLink>
           <NavLink activeClassName="active" to="/addbook">
             Add book
+          </NavLink>
+          <NavLink activeClassName="active" to="/editbook">
+            Edit book
           </NavLink>
         </li>
       </ul>

@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import App from "./App.js";
 const createBookURL= "http://localhost:8080/testjc/api/book/add";
 
 let init = {
