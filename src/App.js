@@ -19,6 +19,7 @@ import Popper from 'popper.js';
 import 'bootstrap/dist/js/bootstrap.bundle.min';
 import AddBook from './addBook';
 import EditBook from "./editBook";
+import GetAllBooksFetch from "./GetAllBooks";
 
 
 function App() {
@@ -58,7 +59,7 @@ function App() {
               </Route>
              <Route path="/logout">{logOut}</Route>
              <Route path="/addbook"><AddBook/></Route>
-             <Route path="/editbook"><EditBook/></Route>
+             <Route path="/editbook"><GetAllBooksFetch/></Route>
           </Switch>
         </div>
       ) : (

@@ -1,11 +1,11 @@
 import React, { useState } from "react";
-import GetAllBooksFetch from "./GetAllBooks"
+import GetAllBooks from "./GetAllBooks"
 const editBookURL= "http://localhost:8080/testjc/api/book/add";
 
 function EditBook(){
     return(
-        <>
-        <GetAllBooksFetch/>
+        <div>
+     
         <form>
         <input
           class="stretch-to-fit"
@@ -49,8 +49,9 @@ function EditBook(){
           value="Submit"
         ></input>
         </form>
-        </>
+        </div>
     )
 }
+
 
 export default EditBook;

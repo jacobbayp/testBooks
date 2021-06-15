@@ -1,5 +1,8 @@
+import AddBook from "./addBook"
+import EditBook from "./editBook";
 import React, { useState, useEffect } from "react";
 const allBooksURL = "http://localhost:8080/testjc/api/book/all";
+
 
 function GetAllBooksFetch() {
 
@@ -17,8 +20,16 @@ function GetAllBooksFetch() {
         setBookList(bookListData);
     };
 
+function handleSubmit(e){
+e.preventDefault();
+
+
+
+}
+
     return (
         <div>
+      
           {/* <ReactBootStrap.Table striped bordered hover variant="sm">*/ }
             <thead>
               <tr>
@@ -36,8 +47,11 @@ function GetAllBooksFetch() {
                 <td>{item.publishYear}</td>
                 <td>{item.publisher}</td>
                 <td>{item.isbn}</td>
+                <td><button onClick={handleSubmit}>edit</button></td>
               </tr>
+          
             ))} 
+         
           {/* </ReactBootStrap.Table> */}
         </div>
       );
